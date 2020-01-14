@@ -4,6 +4,7 @@ import 'dart:convert';
 import 'package:flutter/services.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter/widgets.dart';
+import 'package:flutter_i18n/flutter_i18n_delegate.dart';
 import 'package:intl/intl_standalone.dart';
 import 'package:yaml/yaml.dart';
 
@@ -167,6 +168,9 @@ class FlutterI18n {
   }
 
   static FlutterI18n _retrieveCurrentInstance(BuildContext context) {
+    if(context == null)
+      return FlutterI18nDelegate.current;
+
     return Localizations.of<FlutterI18n>(context, FlutterI18n);
   }
 
